@@ -38,7 +38,7 @@ function del(slug) {
 <template>
 	<div class="form-input-wrapper">
 		<div class="form-input-tags" @click="input.focus()">
-			<input ref="input" v-model="tag" type="text" name="tag" class="form-input form-input-tags-margin" @blur="input.value = ''" @keydown.enter.prevent="add" :placeholder="props.placeholder" />
+			<input ref="input" v-model="tag" type="text" name="" class="form-input form-input-tags-margin" @blur="input.value = ''" @keydown.enter.prevent="add" :placeholder="props.placeholder" />
 			<input v-model="model" type="hidden" :name="props.tags" />
 			<div class="form-input-tag-list">
 				<div class="form-input-tag-item" v-for="tag in model" @click="del(tag)" :title="$t('Delete')">{{ tag }}</div>

@@ -1,5 +1,6 @@
 <script setup>
 import SelectMultiple from '@/components/utils/inputs/SelectMultiple.vue';
+import SelectMultipleObject from '@/components/utils/inputs/SelectMultipleObject.vue';
 import Select from '@/components/utils/inputs/Select.vue';
 import SelectObject from '@/components/utils/inputs/SelectObject.vue';
 import SelectPrefix from '@/components/utils/inputs/Prefix.vue';
@@ -94,6 +95,17 @@ let lang_object_options = ref([
 	{ id: 'vue', name: 'vue' },
 ]);
 
+let categories_object = ref([2, 3]);
+let categories_object_options = ref([
+	{ id: 1, name: 'csharp' },
+	{ id: 2, name: 'css' },
+	{ id: 3, name: 'go' },
+	{ id: 4, name: 'html' },
+	{ id: 5, name: 'java' },
+	{ id: 6, name: 'php' },
+	{ id: 7, name: 'vue' },
+]);
+
 function onSubmit(e) {
 	console.log('Submit', new FormData(e.target));
 }
@@ -108,6 +120,9 @@ function onSubmit(e) {
 
 		<Label text="Categories">({{ categories }})</Label>
 		<SelectMultiple v-model="categories" name="categories[]" :options="categories_options" @change="console.log($event)" />
+
+		<Label text="Categories">({{ categories_object }})</Label>
+		<SelectMultipleObject v-model="categories_object" name="categories_object[]" :options="categories_object_options" @change="console.log($event)" />
 
 		<Label text="Email address">({{ email }})</Label>
 		<Input v-model="email" name="email" type="email" placeholder="Enter email address" @change="console.log($event)" />
@@ -137,7 +152,7 @@ function onSubmit(e) {
 		</SelectorSlot>
 
 		<Label text="Policy Slot">({{ policy }})</Label>
-		<SelectorSlot v-model="policy" name="selector_slot" @change="console.log($event)">
+		<SelectorSlot v-model="policy" name="selector_policy" @change="console.log($event)">
 			<template v-slot:default="{ onClick }">
 				<SelectorSlotButton v-model="policy" value="accept" @click="onClick('accept')"><IconShieldCheck /> Accept</SelectorSlotButton>
 				<SelectorSlotButton v-model="policy" value="reject" @click="onClick('reject')"><IconShieldWarning /> Reject</SelectorSlotButton>
