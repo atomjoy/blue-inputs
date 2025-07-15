@@ -1,4 +1,5 @@
 <script setup>
+import SelectMultiple from '@/components/utils/inputs/SelectMultiple.vue';
 import Select from '@/components/utils/inputs/Select.vue';
 import SelectObject from '@/components/utils/inputs/SelectObject.vue';
 import SelectPrefix from '@/components/utils/inputs/Prefix.vue';
@@ -61,6 +62,8 @@ let selector_mini = ref('senior');
 let selector_mini_options = ref(['regular', 'senior', 'expert', 'master']);
 let policy = ref('accept');
 let lights = ref(true);
+let categories = ref(['php', 'html']);
+let categories_options = ref(['laravel', 'php', 'html']);
 
 let country_obj = ref({
 	name: 'Afghanistan',
@@ -102,6 +105,9 @@ function onSubmit(e) {
 	<form action="/test" method="post" @submit.stop.prevent="onSubmit" style="margin: 50px auto; padding: 20px; width: 90%; height: auto; max-width: 600px; padding-bottom: 200px">
 		<Label text="Avatar image" />
 		<AvatarInput />
+
+		<Label text="Categories">({{ categories }})</Label>
+		<SelectMultiple v-model="categories" name="categories[]" :options="categories_options" @change="console.log($event)" />
 
 		<Label text="Email address">({{ email }})</Label>
 		<Input v-model="email" name="email" type="email" placeholder="Enter email address" @change="console.log($event)" />

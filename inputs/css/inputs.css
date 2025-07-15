@@ -387,6 +387,8 @@
 
 .form-select-option-icon {
 	float: left;
+	width: 24px;
+	height: 24px;
 	margin-right: 5px;
 	min-width: 30px !important;
 	border: 1px solid transparent;
