@@ -1,13 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 
+const emits = defineEmits(['change']);
+const model = defineModel({ required: true });
 const props = defineProps({
+	tags: { type: String, default: 'tags[]' },
 	placeholder: { type: String, default: 'Add tag-slug-lower-case and hit enter' },
 	error_length: { type: String, default: 'Max 40 characters' },
 	error_tag: { type: String, default: 'Invalid tag' },
 });
 
-const model = defineModel();
 const input = ref(null);
 const tag = ref('');
 
@@ -19,6 +21,7 @@ function add() {
 	if (new RegExp('^[a-z0-9]+(?:-[a-z0-9]+)*$').test(tag.value)) {
 		model.value.push(tag.value);
 		tag.value = '';
+		emits('change', model.value);
 	} else {
 		alert(props.error_tag);
 	}
@@ -27,6 +30,7 @@ function add() {
 function del(slug) {
 	if (confirm('Delete?')) {
 		model.value = model.value.filter((i) => i !== slug);
+		emits('change', model.value);
 	}
 }
 </script>
@@ -35,7 +39,7 @@ function del(slug) {
 	<div class="form-input-wrapper">
 		<div class="form-input-tags" @click="input.focus()">
 			<input ref="input" v-model="tag" type="text" name="tag" class="form-input form-input-tags-margin" @blur="input.value = ''" @keydown.enter.prevent="add" :placeholder="props.placeholder" />
-			<input v-model="model" type="hidden" name="tags[]" />
+			<input v-model="model" type="hidden" :name="props.tags" />
 			<div class="form-input-tag-list">
 				<div class="form-input-tag-item" v-for="tag in model" @click="del(tag)" :title="$t('Delete')">{{ tag }}</div>
 			</div>

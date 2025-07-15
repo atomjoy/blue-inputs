@@ -21,7 +21,7 @@ onMounted(() => {
 </script>
 <template>
 	<div class="form-input-wrapper">
-		<input ref="input" v-model="model" class="form-input" :type="props.type" :name="props.name" :class="props.class" :placeholder="props.placeholder" @change="emits('change', $event)" />
+		<input ref="input" v-model="model" class="form-input" :type="props.type" :name="props.name" :class="props.class" :placeholder="props.placeholder" @change="emits('change', $event.target.value)" />
 	</div>
 </template>
 <style>

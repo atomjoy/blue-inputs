@@ -116,7 +116,7 @@ function passPower() {
 </script>
 <template>
 	<div class="form-input-wrapper">
-		<input ref="input" v-model="model" class="form-input form-password" type="password" :name="props.name" :class="props.class" :placeholder="props.placeholder" @keyup="validatePass" @focus="onFocus" @blur="open = false" @change="emits('change', $event)" />
+		<input ref="input" v-model="model" class="form-input form-password" type="password" :name="props.name" :class="props.class" :placeholder="props.placeholder" @keyup="validatePass" @focus="onFocus" @blur="open = false" @change="emits('change', $event.target.value)" />
 		<IconCopy v-if="props.copy" class="form-input-copy" @click="copyClipboard" title="Copy" />
 		<div class="form-input-icon" @click="toggle">
 			<IconEyeClosed v-if="!show" />

@@ -26,7 +26,7 @@ function hash(s) {
 
 <template>
 	<div class="form-checkbox-line">
-		<input :id="hash(props.value)" class="form-checkbox form-checkbox-onoff" type="checkbox" v-model="model" :value="props.value" :name="props.name" :class="props.class" :placeholder="props.placeholder" @change="emits('change', $event)" />
+		<input :id="hash(props.value)" class="form-checkbox form-checkbox-onoff" type="checkbox" v-model="model" :value="props.value" :name="props.name" :class="props.class" :placeholder="props.placeholder" @change="emits('change', $event.target.value)" />
 		<div :class="{ 'form-checkmark-onoff': true, 'form-checkmark-onoff-checked': checked }">
 			<div class="dot"></div>
 		</div>

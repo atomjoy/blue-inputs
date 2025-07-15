@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
 	<div class="form-input-wrapper">
 		<div class="form-price">
-			<input ref="input" class="form-price-input" v-model="model" :type="props.type" :name="props.name" :class="props.class" :placeholder="props.placeholder" @change="emits('change', $event)" />
+			<input ref="input" class="form-price-input" v-model="model" :type="props.type" :name="props.name" :class="props.class" :placeholder="props.placeholder" @change="emits('change', $event.target.value)" />
 			<div class="form-input-currency">
 				<slot>{{ props.currency }}</slot>
 			</div>

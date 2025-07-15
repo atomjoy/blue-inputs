@@ -51,6 +51,7 @@ let payment = ref(['card', 'cash']);
 let settings = ref(['sms']);
 let tags = ref(['sms']);
 let remember_me = ref(true);
+let enable = ref(true);
 let fruits = ref('Melon');
 let about = ref('');
 let selector = ref('dns');
@@ -121,7 +122,7 @@ function onSubmit(e) {
 		<SelectorOnOff v-model="lights" name="lights" @change="console.log($event)" />
 
 		<Label text="Selector Slot">({{ selector_slot }})</Label>
-		<SelectorSlot v-model="selector_slot" name="selector_slot">
+		<SelectorSlot v-model="selector_slot" name="selector_slot" @change="console.log($event)">
 			<template v-slot:default="{ onClick }">
 				<SelectorSlotButton v-model="selector_slot" value="accept" @click="onClick('accept')">✔️ Accept</SelectorSlotButton>
 				<SelectorSlotButton v-model="selector_slot" value="reject" @click="onClick('reject')">🚩 Reject</SelectorSlotButton>
@@ -130,7 +131,7 @@ function onSubmit(e) {
 		</SelectorSlot>
 
 		<Label text="Policy Slot">({{ policy }})</Label>
-		<SelectorSlot v-model="policy" name="selector_slot">
+		<SelectorSlot v-model="policy" name="selector_slot" @change="console.log($event)">
 			<template v-slot:default="{ onClick }">
 				<SelectorSlotButton v-model="policy" value="accept" @click="onClick('accept')"><IconShieldCheck /> Accept</SelectorSlotButton>
 				<SelectorSlotButton v-model="policy" value="reject" @click="onClick('reject')"><IconShieldWarning /> Reject</SelectorSlotButton>
@@ -179,32 +180,32 @@ function onSubmit(e) {
 
 		<Label text="Remeber me">({{ remember_me }})</Label>
 		<div class="form-input-wrapper">
-			<Checkbox value="1" v-model="remember_me" name="remember_me">Remember me</Checkbox>
+			<Checkbox value="1" v-model="remember_me" name="remember_me" @change="console.log($event)">Remember me</Checkbox>
 		</div>
 
-		<Label text="Remeber me">({{ remember_me }})</Label>
+		<Label text="Remeber me">({{ enable }})</Label>
 		<Wrapper>
-			<CheckboxOnOff value="1" v-model="remember_me" name="remember_me" />
+			<CheckboxOnOff value="1" v-model="enable" name="enable" @change="console.log($event)" />
 		</Wrapper>
 
 		<Label text="Settings">({{ settings }})</Label>
 		<Wrapper>
-			<CheckboxOnOff value="email" v-model="settings" name="settings[]" label="Email newsletter" />
-			<CheckboxOnOff value="sms" v-model="settings" name="settings[]" label="Sms newsletter" />
+			<CheckboxOnOff value="email" v-model="settings" name="settings[]" label="Email newsletter" @change="console.log($event)" />
+			<CheckboxOnOff value="sms" v-model="settings" name="settings[]" label="Sms newsletter" @change="console.log($event)" />
 		</Wrapper>
 
 		<Label text="Payments">({{ payment }})</Label>
 		<Wrapper>
-			<Checkbox value="cash" v-model="payment" name="payment[]" label="Cash" />
-			<Checkbox value="card" v-model="payment" name="payment[]" label="Card" />
-			<Checkbox value="blik" v-model="payment" name="payment[]" label="Blik" />
+			<Checkbox value="cash" v-model="payment" name="payment[]" label="Cash" @change="console.log($event)" />
+			<Checkbox value="card" v-model="payment" name="payment[]" label="Card" @change="console.log($event)" />
+			<Checkbox value="blik" v-model="payment" name="payment[]" label="Blik" @change="console.log($event)" />
 		</Wrapper>
 
 		<Label text="Fruits" info="Select only fruits below!">({{ fruits }})</Label>
 		<Wrapper>
-			<Radiobox value="Banan" v-model="fruits" name="fruits" label="Banan" />
-			<Radiobox value="Cherry" v-model="fruits" name="fruits" label="Cherry" />
-			<Radiobox value="Melon" v-model="fruits" name="fruits" label="Melon" />
+			<Radiobox value="Banan" v-model="fruits" name="fruits" label="Banan" @change="console.log($event)" />
+			<Radiobox value="Cherry" v-model="fruits" name="fruits" label="Cherry" @change="console.log($event)" />
+			<Radiobox value="Melon" v-model="fruits" name="fruits" label="Melon" @change="console.log($event)" />
 		</Wrapper>
 
 		<Label text="About">({{ about }})</Label>

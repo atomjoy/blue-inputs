@@ -40,7 +40,7 @@ function copyClipboard() {
 </script>
 <template>
 	<div class="form-input-wrapper">
-		<input ref="input" v-model="model" class="form-input form-password" type="password" :name="props.name" :class="props.class" :placeholder="props.placeholder" @change="emits('change', $event)" />
+		<input ref="input" v-model="model" class="form-input form-password" type="password" :name="props.name" :class="props.class" :placeholder="props.placeholder" @change="emits('change', $event.target.value)" />
 		<span title="Copy">
 			<IconCopy v-if="props.copy" class="form-input-copy" @click="copyClipboard" />
 		</span>
