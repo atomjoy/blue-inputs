@@ -74,7 +74,7 @@ function closeAll() {
 					<div class="form-select-option" @click.stop="update(option)" v-for="option in filtered_options">
 						<div class="form-select-option-icon">
 							<!-- <i v-if="model == option.prefix">✔️</i> -->
-							<IconCheckmark v-if="model == option.prefix" />
+							<IconCheckmark v-if="model == option.code" />
 						</div>
 						<img class="form-select-option-flag" :src="'/flags/' + option.code.toLowerCase() + '.webp'" />
 						{{ '+' + option.prefix + ' ' + option.name ?? props.placeholder }}
