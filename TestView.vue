@@ -4,6 +4,7 @@ import SelectMultipleObject from '@/components/utils/inputs/SelectMultipleObject
 import Select from '@/components/utils/inputs/Select.vue';
 import SelectObject from '@/components/utils/inputs/SelectObject.vue';
 import SelectPrefix from '@/components/utils/inputs/Prefix.vue';
+import SelectPrefixCode from '@/components/utils/inputs/PrefixCode.vue';
 import SelectPrefixObject from '@/components/utils/inputs/PrefixObject.vue';
 import SelectCountry from '@/components/utils/inputs/Country.vue';
 import SelectCountryObject from '@/components/utils/inputs/CountryObject.vue';
@@ -72,6 +73,8 @@ let country_obj = ref({
 	emoji: '🇦🇫',
 	code: 'AF',
 });
+
+let prefix_code = ref('PL');
 
 let prefix_obj = ref({
 	name: 'Afghanistan',
@@ -177,6 +180,9 @@ function onSubmit(e) {
 
 		<Label text="Prefix">({{ prefix }})</Label>
 		<SelectPrefix v-model="prefix" name="prefix" @change="console.log($event)" />
+
+		<Label text="Prefix code">({{ prefix_code }})</Label>
+		<SelectPrefixCode v-model="prefix_code" name="prefix_code" @change="console.log($event)" />
 
 		<Label text="Prefix object">({{ prefix_obj }})</Label>
 		<SelectPrefixObject v-model="prefix_obj" name="prefix_obj" @change="console.log($event)" />
