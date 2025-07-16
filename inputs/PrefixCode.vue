@@ -73,7 +73,7 @@ function closeAll() {
 				<div class="form-select-options-wrapper">
 					<div class="form-select-option" @click.stop="update(option)" v-for="option in filtered_options">
 						<div class="form-select-option-icon">
-							<!-- <i v-if="model == option.prefix">✔️</i> -->
+							<!-- <i v-if="model == option.code">✔️</i> -->
 							<IconCheckmark v-if="model == option.code" />
 						</div>
 						<img class="form-select-option-flag" :src="'/flags/' + option.code.toLowerCase() + '.webp'" />
