@@ -117,7 +117,7 @@ function onSubmit(e) {
 <template>
 	<EventCloseSelects />
 
-	<form action="/test" method="post" @submit.stop.prevent="onSubmit" style="margin: 50px auto; padding: 20px; width: 90%; height: auto; max-width: 600px; padding-bottom: 200px">
+	<form action="/test" method="post" enctype="multipart/form-data" @submit.stop.prevent="onSubmit" style="margin: 50px auto; padding: 20px; width: 90%; height: auto; max-width: 600px; padding-bottom: 200px">
 		<Label text="Avatar image" />
 		<AvatarInput />
 
